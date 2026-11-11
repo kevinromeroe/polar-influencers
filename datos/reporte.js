@@ -51,12 +51,12 @@ rows:[
  ["AJ","duvanybetto.recetas","tt","https://www.tiktok.com/@duvanybetto.recetas/video/7702106134777302293",{v:8385,l:117,c:3,s:28,g:14}],
  ["AJ","valcalov","ig",null,null],
  ["AJ","alessandrolopezt_","ig","https://www.instagram.com/p/DfYF4PXxpEG/",{v:15176,l:491,c:16,s:29}],
- ["AJ","(fila sin nombre)","",null,null]
+ ["AJ","comiendocontriana","tt","https://www.tiktok.com/@comiendocontriana/video/7702867802197134612",{v:65100,l:2657,c:17,s:151,g:251}]
 ],
 conv:{
- all:{n:200,src:"Instagram y TikTok",pos:188,neu:12,neg:0,themes:[["Antojo: «se ve delicioso»",77],["Elogios al creador o a sus mascotas",28],["Dicen que van a preparar, comprar o probar",22],["Nombran la marca o el producto",18],["Lo ven saludable, práctico o económico",10],["Quieren ir a la Feria Velú",6],["Descubren que P.A.N vende atún",5],["Preguntan dónde comprar o el precio",3]],
+ all:{n:215,src:"Instagram y TikTok",pos:201,neu:14,neg:0,themes:[["Antojo: «se ve delicioso»",87],["Elogios al creador o a sus mascotas",29],["Dicen que van a preparar, comprar o probar",24],["Nombran la marca o el producto",19],["Lo ven saludable, práctico o económico",11],["Quieren ir a la Feria Velú",6],["Descubren que P.A.N vende atún",5],["Preguntan dónde comprar o el precio",3]],
   quotes:[["¿PAN tiene atún? La receta se ve deli","Atún P.A.N, Instagram"],["Epaaa, lo conseguiré para que mis michis lo aprueben","Donkat, Instagram"],["¿Dónde puedo conseguir el fideo Buena Mesa?","Buena Mesa, TikTok"]],
-  find:"<b>La conversación es 94 % positiva y no hay comentarios críticos.</b> 22 personas dicen que van a preparar la receta, comprar o probar el producto, pero solo 18 de 200 comentarios nombran la marca: el público recuerda la receta y al creador antes que la marca."},
+  find:"<b>La conversación es 93 % positiva y no hay comentarios críticos.</b> 24 personas dicen que van a preparar la receta, comprar o probar el producto, pero solo 19 de 215 comentarios nombran la marca: el público recuerda la receta y al creador antes que la marca."},
  PAN:{n:100,src:"Instagram y TikTok",pos:95,neu:5,neg:0,themes:[["Antojo: «se ve delicioso»",55],["Dicen que van a preparar la receta",11],["Lo ven saludable, práctico o económico",9],["Descubren que P.A.N vende atún",5],["Comparten su propia receta con atún",4],["Preguntas sobre la receta o el precio",4],["Mencionan a la competencia",1]],
   quotes:[["¿PAN tiene atún? La receta se ve deli","Instagram, wrap de atún"],["No sabía que tenían atún, ¿qué precio tiene la lata?","Instagram, wrap de atún"],["Y eso que no soy fan del atún, pero me provocó","Instagram, calabaza de atún"]],
   find:"<b>5 personas se enteraron por estas piezas de que P.A.N vende atún</b> y 11 dicen que van a preparar la receta. El contenido está dando a conocer la nueva categoría; una persona ya pregunta el precio de la lata."},
@@ -66,8 +66,8 @@ conv:{
  DK:{n:65,src:"Instagram y TikTok",pos:61,neu:4,neg:0,themes:[["Elogios a las mascotas del creador",21],["Dicen que van a comprar o probar el snack",11],["Quieren ir a la Feria Velú",6],["Dicen que sus gatos aman Donkat",6],["Preguntan por sabores",1],["Lamentan que no se venda en su país",1]],
   quotes:[["Epaaa, lo conseguiré para que mis michis lo aprueben","Instagram, Feria Velú"],["Don Kat snack cremoso es lo que siempre elige mi gato","Instagram, reel de producto"],["Wow, no sabía que estaba esta feria, gracias por la información","Instagram, Feria Velú"]],
   find:"<b>Las piezas de la Feria Velú movieron intención:</b> 11 personas dicen que van a comprar o probar el snack y 6 que irán a la feria. Tienen pocas reproducciones, pero la conversación que generan es de compra."},
- AJ:{n:16,src:"Instagram y TikTok",pos:14,neu:2,neg:0,themes:[["Antojo: «se ve delicioso»",9],["Nombran la marca",2],["Etiquetan a alguien para que los prepare",2],["Bromas sobre el video",1]],
-  quotes:[["Con mucho syrup de la misma marca quedan 100","Instagram, pancakes fin de semana"],["Me encanta","TikTok, pancakes de Halloween"]],
-  find:"<b>Un comentario pide el syrup de Aunt Jemima junto con los pancakes:</b> hay espacio para mostrar la mezcla y el syrup juntos. Con 16 comentarios en dos piezas, la conversación todavía es corta."}
+ AJ:{n:31,src:"Instagram y TikTok",pos:27,neu:4,neg:0,themes:[["Antojo: «se ve delicioso»",19],["Nombran la marca",3],["Dicen que van a preparar la receta",2],["Etiquetan a alguien para que los prepare",2],["Preguntas sobre la receta",1],["Bromas sobre el video",1]],
+  quotes:[["Aunt Jemima, aquí tienes tu mayor fan. Mañana hago esta receta","TikTok, pancakes de Halloween"],["Con mucho syrup de la misma marca quedan 100","Instagram, pancakes fin de semana"]],
+  find:"<b>Los pancakes de Halloween generan intención de preparar la receta:</b> 2 personas dicen que la harán y una se declara fan de Aunt Jemima. Otro comentario pide el syrup de la misma marca, así que hay espacio para mostrar la mezcla y el syrup juntos."}
 }
 };

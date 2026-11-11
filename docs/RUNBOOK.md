@@ -35,11 +35,10 @@
 
 ## Agregar una salida pendiente
 
-Reemplaza en `rows` el `null` del enlace y las métricas de la fila. El orden es `[marca, creador, red, enlace, métricas, etiqueta, nota]`. Hoy hay 4 pendientes:
+Reemplaza en `rows` el `null` del enlace y las métricas de la fila. El orden es `[marca, creador, red, enlace, métricas, etiqueta, nota]`. Hoy hay 3 pendientes:
 
 | Marca | Creador | Pendiente |
 |---|---|---|
 | Buena Mesa | @juan23c_ | URL de TikTok incompleta |
 | Buena Mesa | @gabrielabaloco.m | URL de TikTok mal escrita |
 | Aunt Jemima | @valcalov | Sin enlace |
-| Aunt Jemima | Fila sin nombre | Sin creador ni enlace |
