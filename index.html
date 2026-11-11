@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Reporte de campaña de influencers · Alimentos Polar</title>
+<meta name="description" content="Resultados de la campaña UGC de Atún P.A.N, Buena Mesa, Donkat y Aunt Jemima en Instagram y TikTok.">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Bitter:wght@500;600&display=swap">
+<style>
+/* Layout: look de Alimentos Polar Colombia (empresaspolar.com.co): barra azul Polar arriba, fondo blanco, bloques lavanda, títulos Poppins en azul, enlaces en mayúscula espaciada. Encabezado → pestañas por marca → franja de KPI lavanda → conclusiones → comparativos → tabla. */
+:root{
+  --bg:#F5F7FB; --paper:#FFFFFF; --soft:#F1F4FA; --lav:#E7EDF8; --line:#E2E8F2;
+  --ink:#0F1A33; --muted:#5B6782;
+  --polar:#14295E; --polar-2:#1E3A7A; --on-polar:#FFFFFF; --on-polar-muted:#AFC0E3;
+  --celeste:#6CC6F2; --coral:#E8354F; --accent:#2F6FE4;
+  --shadow:0 1px 2px rgba(15,26,51,.05),0 4px 16px rgba(15,26,51,.04);
+  --ig:#2F6FE4; --tt:#0E8C99;
+  --pan:#F2B705; --pan-mark:#A87700; --on-pan:#1A1300; --bm:#D7262E; --dk:#7A4BC2; --aj:#A8551A; --on-brand:#FFFFFF;
+  --brand:var(--polar); --brand-mark:var(--polar); --on-b:var(--on-polar);
+  --warn:#B4570B; --warn-soft:#FDF0E4;
+  --display:"Poppins", "Segoe UI", Arial, sans-serif;
+  --serif:"Bitter", Georgia, serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1222; --paper:#121B30; --soft:#172238; --lav:#1B2945; --line:#26324D;
+  --ink:#E8EDF7; --muted:#9AA8C5;
+  --polar:#2A4C9A; --polar-2:#1B3266; --on-polar:#FFFFFF; --on-polar-muted:#B9C7E8;
+  --celeste:#7FD3F7; --coral:#FF6B80; --accent:#7FA8F5;
+  --shadow:none;
+  --ig:#7FA8F5; --tt:#3CC4CF;
+  --pan:#F5C542; --pan-mark:#F5C542; --bm:#FF6B6B; --dk:#B08CF0; --aj:#E09455;
+  --warn:#F0A04B; --warn-soft:#2E2414; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1222; --paper:#121B30; --soft:#172238; --lav:#1B2945; --line:#26324D;
+  --ink:#E8EDF7; --muted:#9AA8C5;
+  --polar:#2A4C9A; --polar-2:#1B3266; --on-polar:#FFFFFF; --on-polar-muted:#B9C7E8;
+  --celeste:#7FD3F7; --coral:#FF6B80; --accent:#7FA8F5;
+  --shadow:none;
+  --ig:#7FA8F5; --tt:#3CC4CF;
+  --pan:#F5C542; --pan-mark:#F5C542; --bm:#FF6B6B; --dk:#B08CF0; --aj:#E09455;
+  --warn:#F0A04B; --warn-soft:#2E2414; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.55 var(--display);margin:0}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1180px;margin:0 auto}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--accent)}
+:root:not([data-theme="light"]) a{color:inherit}
+:focus-visible{outline:2px solid var(--celeste);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+.caps{font-size:13px;color:var(--muted)}
+
+.mock{background:var(--warn-soft);font-size:13px;padding-block:8px}
+.mock b{color:var(--warn)}
+
+.strip{display:none}
+.top{background:var(--paper);padding-block:22px 20px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px}
+.title{display:flex;align-items:center;gap:18px;min-width:0;flex-wrap:wrap}
+.logos{display:flex;align-items:center;gap:16px}
+.brandlogo{height:44px;width:auto;mix-blend-mode:multiply}
+.polarlogo{height:52px;width:auto}
+:root[data-theme="dark"] .polarlogo{background:#fff;border-radius:6px;padding:4px 6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .polarlogo{background:#fff;border-radius:6px;padding:4px 6px}}
+:root[data-theme="dark"] .brandlogo{mix-blend-mode:normal;background:#fff;border-radius:6px;padding:4px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brandlogo{mix-blend-mode:normal;background:#fff;border-radius:6px;padding:4px}}
+.x{color:var(--muted);font-weight:500}
+.polar{display:grid;line-height:1;color:var(--polar)}
+:root[data-theme="dark"] .polar{color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .polar{color:var(--ink)}}
+.polar small{font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
+.polar b{font-size:26px;font-weight:800;letter-spacing:-.01em}
+.rt{font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--ink);line-height:1.1}
+.right{display:flex;align-items:center;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.band{position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.bandrow{display:flex;align-items:stretch;gap:12px}
+.bandrow .tabs{flex:1;min-width:0}
+.pdf{text-decoration:none;align-self:center;display:flex;align-items:center;gap:10px;font:600 13px/1.2 var(--display);background:var(--paper);color:var(--polar);border:0;border-radius:6px;padding:8px 14px 8px 10px;cursor:pointer;white-space:nowrap;flex:none;text-align:left}
+.pdf:hover{background:var(--lav)}
+.pdf svg{width:22px;height:22px;flex:none}
+.pdf small{display:block;font-weight:500;font-size:11.5px;color:var(--muted)}
+@media (max-width:640px){.pdf small{display:none}.pdf{padding:8px 10px}.pdf .t{display:none}}
+
+.band{background:var(--polar)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tab{font:600 13px var(--display);color:var(--on-polar-muted);background:transparent;border:0;border-bottom:4px solid transparent;padding:14px 16px 10px;cursor:pointer;white-space:nowrap;display:flex;gap:8px;align-items:center}
+.tab:hover{color:var(--on-polar)}
+.tab[aria-selected="true"]{color:var(--on-polar);border-bottom-color:var(--sw,var(--celeste))}
+.tab .sw{width:10px;height:10px;border-radius:50%;background:var(--sw);flex:none}
+.tab small{font-size:11px;background:rgba(255,255,255,.12);border-radius:99px;padding:1px 8px}
+.tab.int{margin-left:auto;font-style:italic}
+
+main{padding-block:32px 56px}
+main .in{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+main .in>*{min-width:0}
+.head h2{font-size:clamp(30px,4.4vw,46px);font-weight:800;color:var(--polar);line-height:1;letter-spacing:-.015em}
+:root[data-theme="dark"] .head h2{color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .head h2{color:var(--ink)}}
+.head{display:grid;gap:8px;border-left:8px solid var(--brand);padding-left:16px}
+.head .sub{color:var(--muted)}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi:first-child{grid-column:span 2}
+
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:18px 18px 16px;display:grid;gap:6px;align-content:start}
+.kpi:first-child{background:var(--brand);color:var(--on-b);border-color:transparent}
+.kpi:first-child em{color:inherit;opacity:.8}
+.kpi span{font-size:13px;font-weight:600;color:var(--muted)}
+.kpi:first-child span{color:inherit;opacity:.85}
+.kpi b{font-size:28px;font-weight:700;line-height:1.1;letter-spacing:-.02em}
+.kpi em{font-style:normal;font-size:12px;color:var(--muted);line-height:1.35}
+
+.ins{display:grid;gap:0;padding:0;margin:0;border-top:1px solid var(--line)}
+.ins li{list-style:none;padding:14px 0 14px 28px;border-bottom:1px solid var(--line);font:500 16px/1.5 var(--serif);position:relative}
+.ins li::before{content:"";position:absolute;left:4px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--brand-mark)}
+.ins b{font-family:var(--display);font-weight:700;font-size:15px}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:24px 26px;display:grid;gap:16px;min-width:0}
+.card h3{font-size:17px;font-weight:700}
+.card .lead{color:var(--muted);font-size:13px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:20px}
+
+.bars{display:grid;gap:9px}
+.bar{display:grid;grid-template-columns:130px 1fr 84px;gap:10px;align-items:center;font-size:13px}
+.bar .lbl{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{display:block;height:14px;background:var(--soft);border-radius:2px;overflow:hidden}
+.fill{display:block;height:100%;background:var(--brand-mark);border-radius:2px}
+.bar .v{text-align:right}
+@media (max-width:480px){.bar{grid-template-columns:100px 1fr 70px}}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+.nets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:14px}
+.net{background:var(--soft);border-radius:10px;padding:16px 18px;display:grid;gap:10px}
+.net .nh{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.dot{width:12px;height:12px;border-radius:3px;flex:none;display:inline-block}
+.net dl{display:grid;grid-template-columns:1fr auto;gap:5px 12px;margin:0;font-size:13px}
+.net dt{color:var(--muted)} .net dd{margin:0;text-align:right;font-weight:600}
+
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:860px}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--soft)}
+td.l,th.l{text-align:left}
+tbody tr:hover td{background:var(--soft)}
+tr:last-child td{border-bottom:0}
+.chip{display:inline-flex;align-items:center;gap:6px;font-weight:500}
+.tag{font-size:11.5px;font-weight:600;background:var(--lav);border-radius:99px;padding:2px 8px;margin-left:6px}
+.pend{color:var(--warn);font-weight:600;text-align:left}
+.go{font-size:13px;font-weight:600}
+
+.issues{display:grid;gap:10px;padding:0;margin:0}
+.issues li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:6px;align-items:start}
+.issues .st{font-size:12px;font-weight:700;background:var(--warn-soft);color:var(--warn);border-radius:99px;padding:3px 9px;white-space:nowrap}
+.issues code{font-size:12px;word-break:break-all;color:var(--muted)}
+.find{font:500 15.5px/1.6 var(--serif);border-top:1px solid var(--line);padding-top:12px;max-width:72ch}
+.find b{font-family:var(--display);font-weight:700;font-size:14.5px}
+.conv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:22px 32px}
+.scale{display:grid;gap:10px;align-content:start}
+.stack{display:flex;height:22px;border-radius:4px;overflow:hidden;background:var(--soft)}
+.stack span{display:block}
+.big{font-size:40px;font-weight:800;line-height:1;color:var(--ink)}
+.themes{display:grid;gap:8px}
+.th{display:grid;grid-template-columns:1fr 34px;gap:4px 10px;font-size:13px;align-items:center}
+.th .track{grid-column:1/-1;height:8px}
+.quotes{display:grid;gap:10px;margin:0;padding:0}
+.quotes li{list-style:none;font:italic 500 15px/1.5 var(--serif);padding-left:14px;border-left:3px solid var(--brand-mark)}
+.quotes small{display:block;font:500 12px var(--display);color:var(--muted);font-style:normal}
+.legal{padding-block:20px 32px;border-top:1px solid var(--line);background:var(--paper);color:var(--muted);font-size:12px;line-height:1.5}
+.legal .in{display:grid;gap:8px}
+.legal nav{display:flex;flex-wrap:wrap;gap:4px 16px}
+.legal a{color:var(--muted)}
+@media print{.band{display:none}body{background:#fff}.card,.kpi{box-shadow:none;break-inside:avoid}.top{border-bottom:0}}
+.foot{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="strip" aria-hidden="true"></div>
+<header class="top gut"><div class="in toprow">
+  <div class="title">
+    <div class="logos">
+      <img class="polarlogo" src="assets/logo-polar.png" width="308" height="101" alt="Alimentos Polar">
+      <span class="x" aria-hidden="true">×</span>
+      <img class="brandlogo" src="assets/logo-felipe-agency.png" alt="Felipe Agency">
+    </div>
+    <h1 class="rt">Reporte de campaña de influencers</h1>
+  </div>
+  <p class="caps" id="corte"></p>
+</div></header>
+
+<nav class="band gut" aria-label="Marcas"><div class="in bandrow"><div class="tabs" role="tablist" id="tabs"></div>
+  <a class="pdf" id="pdf" href="pdf/resumen.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg><span class="t">Descargar PDF<small id="pdfsub">Resumen de campaña</small></span></a></div></nav>
+
+<main class="gut"><div class="in" id="view"></div></main>
+<footer class="gut legal"><div class="in">
+  <p><strong>© <span id="y"></span> Datalítica Colombia S.A.S.</strong> · NIT 901.957.313-6 · Todos los derechos reservados. Reporte confidencial preparado para Felipe Agency y Alimentos Polar; su reproducción o distribución sin autorización está prohibida (Ley 23 de 1982).</p>
+  <nav aria-label="Información legal"><a href="legal/terminos.html">Términos y condiciones de uso</a><a href="legal/datos-personales.html">Política de tratamiento de datos personales</a><a href="legal/datos-personales.html#aviso">Aviso de privacidad</a><a href="mailto:comercial@datalitica.com.co">comercial@datalitica.com.co</a></nav>
+</div></footer>
+
+<script src="datos/reporte.js"></script>
+<script>
+const D=window.REPORTE;const FEE=D.fee;
+// [marca, creador, red, enlace|null, métricas públicas {v,l,c,s,g} | "oculto", etiqueta]
+const R=D.rows;
+const BRANDS=[["PAN","Atún P.A.N"],["BM","Buena Mesa"],["DK","Donkat"],["AJ","Aunt Jemima"]];
+const BN=Object.fromEntries(BRANDS);
+const BC={all:["var(--polar)","var(--polar)","var(--on-polar)"],PAN:["var(--pan)","var(--pan-mark)","var(--on-pan)"],BM:["var(--bm)","var(--bm)","var(--on-brand)"],DK:["var(--dk)","var(--dk)","var(--on-brand)"],AJ:["var(--aj)","var(--aj)","var(--on-brand)"],int:["var(--warn)","var(--warn)","var(--on-brand)"]};
+// cada fila de la base es una salida pagada; duvanybetto (P.A.N) publicó TikTok + reel con un solo pago
+const P=R.map(([b,c,red,url,m,tag,extra])=>({b,c,red,url,m,tag:tag||"",extra:extra||"",fee:extra==="mismo pago"?0:FEE}));
+
+const nf=new Intl.NumberFormat("es-CO");
+const n=v=>nf.format(Math.round(v));
+const cop=v=>"$"+nf.format(Math.round(v));
+const big=v=>v>=1e6?(v/1e6).toLocaleString("es-CO",{maximumFractionDigits:2})+" M":v>=1e4?(v/1e3).toLocaleString("es-CO",{maximumFractionDigits:1})+" mil":n(v);
+const pct=v=>(v*100).toLocaleString("es-CO",{maximumFractionDigits:1})+" %";
+const NET={ig:["Instagram","var(--ig)"],tt:["TikTok","var(--tt)"]};
+const inter=m=>m.l+m.c+(m.s||0)+(m.g||0);
+const hasM=m=>m&&typeof m==="object";
+
+// Totales: cada enlace cuenta una sola vez aunque aparezca en varias filas (UGC)
+function agg(list){
+  const seen=new Map();
+  for(const p of list) if(p.m&&typeof p.m==="object"&&!seen.has(p.url)) seen.set(p.url,p.m);
+  const ms=[...seen.values()];
+  const a={rows:list.filter(p=>p.fee).length,fee:list.reduce((x,p)=>x+p.fee,0),links:new Set(list.filter(p=>p.url).map(p=>p.url)).size,measured:ms.length,
+    v:ms.reduce((x,m)=>x+m.v,0),l:ms.reduce((x,m)=>x+m.l,0),c:ms.reduce((x,m)=>x+m.c,0),i:ms.reduce((x,m)=>x+inter(m),0),
+    pending:list.filter(p=>!p.url).length};
+  const vis=ms.filter(m=>!m.hl);a.er=vis.length?(vis.reduce((x,m)=>x+m.l+m.c,0))/vis.reduce((x,m)=>x+m.v,0):0;a.hidden=ms.filter(m=>m.hl).length;
+  const feeM=list.filter(p=>p.m&&typeof p.m==="object").reduce((x,p)=>x+p.fee,0);
+  a.cpv=feeM/a.v;a.cpe=feeM/a.i;a.creators=new Set(list.map(p=>p.c).filter(c=>!c.startsWith("("))).size;
+  return a;
+}
+const ALL=agg(P);
+const CONV=D.conv;;
+function convCard(k){
+  const c=CONV[k];const mx=Math.max(...c.themes.map(t=>t[1]));
+  const w=v=>(v/c.n*100).toFixed(1)+"%";
+  return `<section class="card"><h3>Conversación y balanza de opinión</h3><p class="lead">${c.n} comentarios de ${c.src}, sin contar los del creador ni los de la marca.</p>
+  <div class="conv">
+   <div class="scale"><span class="big num">${pct(c.pos/c.n)}</span><span>de los comentarios son positivos</span>
+    <div class="stack" role="img" aria-label="Positivos ${c.pos}, neutros ${c.neu}, críticos ${c.neg}"><span style="width:${w(c.pos)};background:var(--brand-mark)"></span><span style="width:${w(c.neu)};background:var(--lav)"></span><span style="width:${w(c.neg)};background:var(--bm)"></span></div>
+    <div class="legend"><span><i style="background:var(--brand-mark)"></i>Positivos ${c.pos}</span><span><i style="background:var(--lav)"></i>Neutros ${c.neu}</span><span><i style="background:var(--bm)"></i>Críticos ${c.neg}</span></div>
+   </div>
+   <div class="themes"><p class="lead">De qué habla la gente, en número de comentarios.</p>${c.themes.map(t=>`<div class="th"><span>${t[0]}</span><span class="num" style="text-align:right">${t[1]}</span><span class="track"><span class="fill" style="width:${(t[1]/mx*100).toFixed(1)}%"></span></span></div>`).join("")}</div>
+  </div>
+  <ul class="quotes">${c.quotes.map(q=>`<li>«${q[0]}»<small>${q[1]}</small></li>`).join("")}</ul>
+  <p class="find">${c.find}</p></section>`;
+}
+const med=a=>{const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+
+function kpis(a){
+  return `<section class="kpis" aria-label="Indicadores">
+  <div class="kpi"><span>Inversión</span><b class="num">${cop(a.fee)}</b><em>${a.rows} salidas de ${cop(FEE)}</em></div>
+  <div class="kpi"><span>Piezas</span><b class="num">${a.links}</b><em>${a.creators} creadores UGC</em></div>
+  <div class="kpi"><span>Reproducciones</span><b class="num">${big(a.v)}</b><em>${a.measured} piezas con dato público</em></div>
+  <div class="kpi"><span>Interacciones</span><b class="num">${big(a.i)}</b><em>me gusta, comentarios, compartidos y guardados</em></div>
+  <div class="kpi"><span>Engagement</span><b class="num">${pct(a.er)}</b><em>(me gusta + comentarios) ÷ reproducciones</em></div>
+  <div class="kpi"><span>CPV</span><b class="num">${cop(a.cpv)}</b><em>costo por reproducción</em></div>
+  <div class="kpi"><span>CPE</span><b class="num">${cop(a.cpe)}</b><em>costo por interacción</em></div>
+  </section>`;
+}
+function bars(items,fmt){
+  const mx=Math.max(...items.map(i=>i.v));
+  return `<div class="bars">${items.map(i=>`<div class="bar"><span class="lbl" title="${i.l}">${i.l}</span><span class="track"><span class="fill" style="width:${(i.v/mx*100).toFixed(1)}%;${i.c?`background:${i.c}`:""}"></span></span><span class="v num">${fmt(i.v)}</span></div>`).join("")}</div>`;
+}
+function nets(list){
+  return `<div class="nets">${["ig","tt"].map(r=>{const a=agg(list.filter(p=>p.red===r));if(!a.rows)return"";return `<div class="net"><div class="nh"><span class="dot" style="background:${NET[r][1]}"></span>${NET[r][0]}</div><dl>
+  <dt>Piezas</dt><dd class="num">${a.links}</dd><dt>Reproducciones</dt><dd class="num">${big(a.v)}</dd><dt>Interacciones</dt><dd class="num">${big(a.i)}</dd><dt>Engagement</dt><dd class="num">${pct(a.er)}</dd><dt>CPV</dt><dd class="num">${cop(a.cpv)}</dd></dl></div>`}).join("")}</div>`;
+}
+const netChip=p=>NET[p.red]?`<span class="chip"><span class="dot" style="background:${NET[p.red][1]}"></span>${NET[p.red][0]}</span>`:"—";
+function table(list,showBrand){
+  return `<div class="tw"><table><thead><tr><th class="l">Creador</th>${showBrand?'<th class="l">Marca</th>':""}<th class="l">Red</th><th>Inversión</th><th>Reproducciones</th><th>Interacciones</th><th>Engagement</th><th>CPV</th><th>CPE</th><th class="l">Pieza</th></tr></thead><tbody>
+  ${list.map(p=>{const m=p.m;const tag=(p.tag==="feria"?'<span class="tag">Feria Velú</span>':"")+(p.extra?`<span class="tag">${p.extra}</span>`:"");
+  let cells;
+  if(!p.url)cells=`<td colspan="6" class="pend">Enlace pendiente</td>`;
+  else if(m==="oculto")cells=`<td colspan="5" class="pend">Me gusta ocultos: se mide en la captura completa</td><td class="l"><a class="go" href="${p.url}" target="_blank" rel="noopener">Ver</a></td>`;
+  else cells=`<td class="num">${n(m.v)}</td><td class="num">${n(inter(m))}</td><td class="num">${m.hl?"ocultos":pct((m.l+m.c)/m.v)}</td><td class="num">${p.fee?cop(p.fee/m.v):"—"}</td><td class="num">${p.fee?cop(p.fee/inter(m)):"—"}</td><td class="l"><a class="go" href="${p.url}" target="_blank" rel="noopener">Ver</a></td>`;
+  return `<tr><td class="l">@${p.c}${tag}</td>${showBrand?`<td class="l">${BN[p.b]}</td>`:""}<td class="l">${netChip(p)}</td><td class="num">${p.fee?cop(p.fee):"incluida"}</td>${cells}</tr>`}).join("")}
+  </tbody></table></div>`;
+}
+function uniq(list){const g=new Map();for(const p of list){if(!(p.url&&p.m&&typeof p.m==="object"))continue;const o=g.get(p.url);if(o){if(!o.c.split(" + @").includes(p.c))o.c+=" + @"+p.c;o.fee+=p.fee}else g.set(p.url,{...p})}return [...g.values()]}
+
+function viewAll(){
+  const by=BRANDS.map(([k,l])=>({k,l,a:agg(P.filter(p=>p.b===k))}));
+  const topV=[...by].sort((x,y)=>y.a.v-x.a.v)[0], best=[...by].sort((x,y)=>x.a.cpv-y.a.cpv)[0];
+  const ig=agg(P.filter(p=>p.red==="ig")),tt=agg(P.filter(p=>p.red==="tt"));
+  const top=uniq(P).sort((a,b)=>b.m.v-a.m.v);const t2=top[0].m.v+top[1].m.v;
+  const tb=[...by].sort((x,y)=>y.a.v-x.a.v)[0],tbTop=uniq(P.filter(p=>p.b===tb.k)).sort((x,y)=>y.m.v-x.m.v)[0];
+  const worst=[...by].sort((x,y)=>y.a.cpv-x.a.cpv)[0];
+  const fer=agg(P.filter(p=>p.tag==="feria")),ferU=uniq(P.filter(p=>p.tag==="feria"));
+  const t10=top.slice(0,10),t10tt=t10.filter(p=>p.red==="tt").length,dkIn=t10.filter(p=>p.b==="DK").length,dkRows=P.filter(p=>p.b==="DK").length;
+  const sh1=tbTop.m.v/tb.a.v;
+  const fBrand=sh1>=.5?`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}), pero depende de una sola pieza:</b> @${tbTop.c} aporta ${pct(sh1)} de lo que suma la marca.</p>`:`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}) con un resultado repartido:</b> su pieza más vista, de @${tbTop.c}, aporta solo ${pct(sh1)} del total de la marca.</p>`;
+  const fCpv=`<p class="find"><b>${worst.l} es la marca más costosa por reproducción (${cop(worst.a.cpv)}).</b>${worst.k==="DK"?` Pesan las ${fer.rows} salidas de la Feria Velú: promedian ${n(fer.v/ferU.length)} reproducciones por pieza y son, en su mayoría, invitaciones a un evento de 3 días.`:""}</p>`;
+  const fNet=`<p class="find"><b>TikTok tiene ${tt.links} de las ${ALL.links} piezas y aporta ${pct(tt.v/ALL.v)} de las reproducciones.</b> ${tt.er>=ig.er?`También tiene más engagement: ${pct(tt.er)} frente a ${pct(ig.er)} en Instagram.`:`Instagram, en cambio, tiene más engagement: ${pct(ig.er)} frente a ${pct(tt.er)}.`}</p>`;
+  const fTop=`<p class="find"><b>${t10tt} de las 10 piezas con más reproducciones son de TikTok.</b> Donkat aparece ${dkIn===1?"una sola vez":dkIn+" veces"} aunque tiene ${dkRows} de las ${ALL.rows} salidas.</p>`;
+  return `<div class="head"><h2>Resumen de campaña</h2><p class="sub">Contenido UGC de Atún P.A.N, Buena Mesa, Donkat y Aunt Jemima en Instagram y TikTok.</p></div>
+  ${kpis(ALL)}
+  <ul class="ins">
+   <li><b>Dos piezas concentran ${pct(t2/ALL.v)} de las reproducciones:</b> @${top[0].c} (${BN[top[0].b]}, ${big(top[0].m.v)}) y @${top[1].c} (${BN[top[1].b]}, ${big(top[1].m.v)}). ${top[0].red===top[1].red?`Las dos son de ${NET[top[0].red][0]}.`:`Una es de ${NET[top[0].red][0]} y la otra de ${NET[top[1].red][0]}.`}</li>
+   <li><b>TikTok rinde más por peso invertido:</b> cada reproducción cuesta ${cop(tt.cpv)} en TikTok y ${cop(ig.cpv)} en Instagram.</li>
+   <li><b>${best.l} es la marca más eficiente</b>, con ${cop(best.a.cpv)} por reproducción, frente a ${cop(ALL.cpv)} de la campaña.</li>
+  </ul>
+  <div class="grid2">
+   <section class="card"><h3>Reproducciones por marca</h3><p class="lead">Cuánta gente vio el contenido de cada marca.</p>${bars(by.map(b=>({l:b.l,v:b.a.v,c:BC[b.k][1]})),big)}${fBrand}</section>
+   <section class="card"><h3>Costo por reproducción por marca</h3><p class="lead">Cuánto pagó cada marca por cada reproducción. Una barra más corta es mejor.</p>${bars(by.map(b=>({l:b.l,v:b.a.cpv,c:BC[b.k][1]})),cop)}${fCpv}</section>
+  </div>
+  <section class="card"><h3>Resultados por red</h3>${nets(P)}${fNet}</section>
+  ${convCard("all")}
+  <section class="card"><h3>Las 10 piezas con más reproducciones</h3>${table(top.slice(0,10),true)}${fTop}</section>
+  <p class="foot">Fuente: datos públicos de Instagram y TikTok capturados por Datalítica. Cuando varias salidas usan el mismo enlace, sus reproducciones se cuentan una sola vez en los totales. Los guardados de Instagram no son públicos, y en los reels con me gusta ocultos el engagement no entra en el promedio.</p>`;
+}
+function viewBrand(k){
+  const l=BN[k],list=P.filter(p=>p.b===k),a=agg(list),u=uniq(list).sort((x,y)=>y.m.v-x.m.v);
+  const top=u[0],eff=[...u].filter(p=>p.fee).sort((x,y)=>x.fee/x.m.v-y.fee/y.m.v)[0];
+  const lines=[`<li><b>@${top.c} lidera ${l}</b> con ${big(top.m.v)} reproducciones, ${pct(top.m.v/a.v)} del total de la marca.</li>`,
+   `<li><b>El engagement de ${l} es ${pct(a.er)}</b>, ${a.er>=ALL.er?"por encima":"por debajo"} del ${pct(ALL.er)} de la campaña.</li>`];
+  if(k==="DK"){const f=agg(list.filter(p=>p.tag==="feria")),o=agg(list.filter(p=>p.tag!=="feria"));lines.push(`<li><b>Las ${f.rows} salidas de la Feria Velú suman ${big(f.v)} reproducciones</b>; las ${o.rows} de contenido de producto suman ${big(o.v)}.</li>`)}
+  else if(eff&&eff!==top)lines.push(`<li><b>@${eff.c} es la pieza más eficiente:</b> ${cop(eff.fee/eff.m.v)} por reproducción.</li>`);
+  const vs=u.map(p=>p.m.v),md=med(vs);
+  const fPieces=u.length<4?`<p class="find"><b>@${top.c} aporta ${pct(top.m.v/a.v)} de las reproducciones de ${l}</b> con ${pct(top.fee/a.fee)} de su inversión.</p>`:`<p class="find"><b>La mitad de las piezas de ${l} queda por debajo de ${n(md)} reproducciones.</b> La pieza líder suma ${big(top.m.v)}, ${(top.m.v/md).toLocaleString("es-CO",{maximumFractionDigits:0})} veces la mediana.</p>`;
+  const ni=agg(list.filter(p=>p.red==="ig")),nt=agg(list.filter(p=>p.red==="tt"));
+  const fNet=ni.measured&&nt.measured?`<p class="find"><b>${nt.cpv<ni.cpv?"TikTok":"Instagram"} sale más barato en ${l}:</b> ${cop(Math.min(nt.cpv,ni.cpv))} por reproducción, frente a ${cop(Math.max(nt.cpv,ni.cpv))} en ${nt.cpv<ni.cpv?"Instagram":"TikTok"}.</p>`:`<p class="find"><b>Todas las piezas de ${l} están en ${nt.measured?"TikTok":"Instagram"}</b>, con ${cop(a.cpv)} por reproducción frente a ${cop(ALL.cpv)} de toda la campaña.</p>`;
+  const cheap=u.filter(p=>p.fee).sort((x,y)=>x.fee/x.m.v-y.fee/y.m.v),hid=a.hidden;
+  const fTab=`<p class="find"><b>El costo por reproducción va de ${cop(cheap[0].fee/cheap[0].m.v)} a ${cop(cheap[cheap.length-1].fee/cheap[cheap.length-1].m.v)}</b> entre las piezas de ${l}, con el mismo pago por salida.${hid?` ${hid} pieza${hid>1?"s tienen":" tiene"} los me gusta ocultos: su engagement no entra en el promedio.`:""}</p>`;
+  return `<div class="head"><h2>${l}</h2><p class="sub">${a.rows} salidas, ${a.links} piezas y ${a.creators} creadores${a.pending?`. ${a.pending} con enlace pendiente`:""}.</p></div>
+  ${kpis(a)}
+  <ul class="ins">${lines.join("")}</ul>
+  <div class="grid2">
+   <section class="card"><h3>Reproducciones por pieza</h3><p class="lead">Qué piezas movieron a la marca. El color indica la red.</p>${bars(u.map(p=>({l:"@"+p.c,v:p.m.v,c:NET[p.red][1]})),big)}<div class="legend"><span><i style="background:var(--ig)"></i>Instagram</span><span><i style="background:var(--tt)"></i>TikTok</span></div>${fPieces}</section>
+   <section class="card"><h3>Resultados por red</h3>${nets(list)}${fNet}</section>
+  </div>
+  ${convCard(k)}
+  <section class="card"><h3>Detalle por salida</h3>${table(list,false)}${fTab}</section>`;
+}
+const TABS=[["all","Resumen de campaña"],...BRANDS];
+const tabsEl=document.getElementById("tabs"),view=document.getElementById("view");
+tabsEl.innerHTML=TABS.map(([k,l])=>{const c=k==="all"?P.filter(p=>p.fee).length:P.filter(p=>p.b===k&&p.fee).length;return `<button class="tab" role="tab" data-k="${k}" aria-selected="${k==="all"}" style="--sw:${BC[k][0]}">${k!=="all"?'<span class="sw" aria-hidden="true"></span>':""}${l} <small>${c}</small></button>`}).join("");
+const SLUG={all:"resumen",PAN:"atun-pan",BM:"buena-mesa",DK:"donkat",AJ:"aunt-jemima"};
+const KEY=Object.fromEntries(Object.entries(SLUG).map(([k,v])=>[v,k]));
+window.REPORT_TABS=Object.values(SLUG);
+document.getElementById("corte").textContent="Datos públicos al "+D.corteTexto;
+document.getElementById("y").textContent=new Date().getFullYear();
+function show(k){for(const b of tabsEl.children)b.setAttribute("aria-selected",b.dataset.k===k);
+  const a=document.getElementById("pdf");a.href="pdf/"+SLUG[k]+".pdf";a.setAttribute("download","Reporte influencers Polar - "+TABS.find(t=>t[0]===k)[1]+".pdf");
+  if(location.hash.slice(1)!==SLUG[k])history.replaceState(null,"",k==="all"?location.pathname:"#"+SLUG[k]);
+  const r=document.documentElement.style;r.setProperty("--brand",BC[k][0]);r.setProperty("--brand-mark",BC[k][1]);r.setProperty("--on-b",BC[k][2]);
+  document.getElementById("pdfsub").textContent=TABS.find(t=>t[0]===k)[1];view.innerHTML=k==="all"?viewAll():viewBrand(k)}
+tabsEl.addEventListener("click",e=>{const b=e.target.closest(".tab");if(b){show(b.dataset.k);scrollTo({top:0})}});
+const fromHash=()=>KEY[location.hash.slice(1)]||"all";
+addEventListener("hashchange",()=>show(fromHash()));
+show(fromHash());
+</script>
+
+</body>
+</html>
