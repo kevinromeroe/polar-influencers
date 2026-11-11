@@ -37,4 +37,4 @@
 
 Agrega una fila en `rows` con el orden `[marca, creador, red, enlace, métricas, etiqueta, nota]`. Si el enlace todavía no llega, usa `null` en enlace y métricas: la salida cuenta en la inversión y aparece como "aún no tiene enlace".
 
-Al 12 de noviembre de 2026 no hay salidas pendientes: las 42 de la base del cliente tienen enlace verificado.
+Al 11 de noviembre de 2026 no hay salidas pendientes: las 42 de la base del cliente tienen enlace verificado.
