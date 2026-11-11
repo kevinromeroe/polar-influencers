@@ -16,35 +16,35 @@
 <style>
 /* Layout: look de Alimentos Polar Colombia (empresaspolar.com.co): barra azul Polar arriba, fondo blanco, bloques lavanda, títulos Poppins en azul, enlaces en mayúscula espaciada. Encabezado → pestañas por marca → franja de KPI lavanda → conclusiones → comparativos → tabla. */
 :root{
-  --bg:#F5F7FB; --paper:#FFFFFF; --soft:#F1F4FA; --lav:#E7EDF8; --line:#E2E8F2;
-  --ink:#0F1A33; --muted:#5B6782;
-  --polar:#14295E; --polar-2:#1E3A7A; --on-polar:#FFFFFF; --on-polar-muted:#AFC0E3;
-  --celeste:#6CC6F2; --coral:#E8354F; --accent:#2F6FE4;
-  --shadow:0 1px 2px rgba(15,26,51,.05),0 4px 16px rgba(15,26,51,.04);
-  --ig:#2F6FE4; --tt:#0E8C99;
-  --pan:#F2B705; --pan-mark:#A87700; --on-pan:#1A1300; --bm:#D7262E; --dk:#7A4BC2; --aj:#A8551A; --on-brand:#FFFFFF;
+  --bg:#F7F6F5; --paper:#FFFFFF; --soft:#F3F1F0; --lav:#ECE8E7; --line:#E7E3E1;
+  --ink:#1D1A1C; --muted:#625D61;
+  --polar:#C8101A; --polar-2:#A50D15; --on-polar:#FFFFFF; --on-polar-muted:#FFE5E6;
+  --celeste:#FFFFFF; --coral:#E8354F; --accent:#C8101A;
+  --shadow:0 1px 2px rgba(29,26,28,.05),0 4px 16px rgba(29,26,28,.04);
+  --ig:#2F6FE4; --tt:#1F1F23;
+  --pan:#F2B705; --pan-mark:#A87700; --on-pan:#1A1300; --bm:#2E7D4F; --dk:#7A4BC2; --aj:#A8551A; --on-brand:#FFFFFF;
   --brand:var(--polar); --brand-mark:var(--polar); --on-b:var(--on-polar);
   --warn:#B4570B; --warn-soft:#FDF0E4;
   --display:"Poppins", "Segoe UI", Arial, sans-serif;
   --serif:"Bitter", Georgia, serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0B1222; --paper:#121B30; --soft:#172238; --lav:#1B2945; --line:#26324D;
-  --ink:#E8EDF7; --muted:#9AA8C5;
-  --polar:#2A4C9A; --polar-2:#1B3266; --on-polar:#FFFFFF; --on-polar-muted:#B9C7E8;
-  --celeste:#7FD3F7; --coral:#FF6B80; --accent:#7FA8F5;
+  --bg:#141113; --paper:#1C181A; --soft:#241F21; --lav:#2C2628; --line:#352E31;
+  --ink:#F2EEEF; --muted:#B3AAAE;
+  --polar:#B5121B; --polar-2:#8E0E15; --on-polar:#FFFFFF; --on-polar-muted:#FFD6D8;
+  --celeste:#FFFFFF; --coral:#FF6B80; --accent:#FF7A80;
   --shadow:none;
-  --ig:#7FA8F5; --tt:#3CC4CF;
-  --pan:#F5C542; --pan-mark:#F5C542; --bm:#FF6B6B; --dk:#B08CF0; --aj:#E09455;
+  --ig:#7FA8F5; --tt:#E8E8EC;
+  --pan:#F5C542; --pan-mark:#F5C542; --bm:#5CC08A; --dk:#B08CF0; --aj:#E09455;
   --warn:#F0A04B; --warn-soft:#2E2414; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0B1222; --paper:#121B30; --soft:#172238; --lav:#1B2945; --line:#26324D;
-  --ink:#E8EDF7; --muted:#9AA8C5;
-  --polar:#2A4C9A; --polar-2:#1B3266; --on-polar:#FFFFFF; --on-polar-muted:#B9C7E8;
-  --celeste:#7FD3F7; --coral:#FF6B80; --accent:#7FA8F5;
+  --bg:#141113; --paper:#1C181A; --soft:#241F21; --lav:#2C2628; --line:#352E31;
+  --ink:#F2EEEF; --muted:#B3AAAE;
+  --polar:#B5121B; --polar-2:#8E0E15; --on-polar:#FFFFFF; --on-polar-muted:#FFD6D8;
+  --celeste:#FFFFFF; --coral:#FF6B80; --accent:#FF7A80;
   --shadow:none;
-  --ig:#7FA8F5; --tt:#3CC4CF;
-  --pan:#F5C542; --pan-mark:#F5C542; --bm:#FF6B6B; --dk:#B08CF0; --aj:#E09455;
+  --ig:#7FA8F5; --tt:#E8E8EC;
+  --pan:#F5C542; --pan-mark:#F5C542; --bm:#5CC08A; --dk:#B08CF0; --aj:#E09455;
   --warn:#F0A04B; --warn-soft:#2E2414; color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -68,7 +68,7 @@ a{color:var(--accent)}
 .title{display:flex;align-items:center;gap:18px;min-width:0;flex-wrap:wrap}
 .logos{display:flex;align-items:center;gap:16px}
 .brandlogo{height:44px;width:auto;mix-blend-mode:multiply}
-.polarlogo{height:52px;width:auto}
+.polarlogo{height:72px;width:auto}
 :root[data-theme="dark"] .polarlogo{background:#fff;border-radius:6px;padding:4px 6px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .polarlogo{background:#fff;border-radius:6px;padding:4px 6px}}
 :root[data-theme="dark"] .brandlogo{mix-blend-mode:normal;background:#fff;border-radius:6px;padding:4px}
@@ -95,14 +95,14 @@ a{color:var(--accent)}
 .tab{font:600 13px var(--display);color:var(--on-polar-muted);background:transparent;border:0;border-bottom:4px solid transparent;padding:14px 16px 10px;cursor:pointer;white-space:nowrap;display:flex;gap:8px;align-items:center}
 .tab:hover{color:var(--on-polar)}
 .tab[aria-selected="true"]{color:var(--on-polar);border-bottom-color:var(--sw,var(--celeste))}
-.tab .sw{width:10px;height:10px;border-radius:50%;background:var(--sw);flex:none}
-.tab small{font-size:11px;background:rgba(255,255,255,.12);border-radius:99px;padding:1px 8px}
+.tab .sw{width:10px;height:10px;border-radius:50%;background:var(--sw);flex:none;box-shadow:0 0 0 2px #fff}
+.tab small{font-size:11px;background:rgba(255,255,255,.18);border-radius:99px;padding:1px 8px}
 .tab.int{margin-left:auto;font-style:italic}
 
 main{padding-block:32px 56px}
 main .in{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
 main .in>*{min-width:0}
-.head h2{font-size:clamp(30px,4.4vw,46px);font-weight:800;color:var(--polar);line-height:1;letter-spacing:-.015em}
+.head h2{font-size:clamp(30px,4.4vw,46px);font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.015em}
 :root[data-theme="dark"] .head h2{color:var(--ink)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .head h2{color:var(--ink)}}
 .head{display:grid;gap:8px;border-left:8px solid var(--brand);padding-left:16px}
@@ -189,7 +189,7 @@ tr:last-child td{border-bottom:0}
 <header class="top gut"><div class="in toprow">
   <div class="title">
     <div class="logos">
-      <img class="polarlogo" src="assets/logo-polar.png" width="308" height="101" alt="Alimentos Polar">
+      <img class="polarlogo" src="assets/logo-polar.png" width="600" height="423" alt="Alimentos Polar">
       <span class="x" aria-hidden="true">×</span>
       <img class="brandlogo" src="assets/logo-felipe-agency.png" alt="Felipe Agency">
     </div>
