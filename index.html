@@ -260,13 +260,13 @@ const med=a=>{const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[
 
 function kpis(a){
   return `<section class="kpis" aria-label="Indicadores">
-  <div class="kpi"><span>Inversión</span><b class="num">${cop(a.fee)}</b><em>${a.rows} salidas de ${cop(FEE)}</em></div>
-  <div class="kpi"><span>Piezas</span><b class="num">${a.links}</b><em>${a.creators} creadores UGC</em></div>
-  <div class="kpi"><span>Reproducciones</span><b class="num">${big(a.v)}</b><em>${a.measured} piezas con dato público</em></div>
-  <div class="kpi"><span>Interacciones</span><b class="num">${big(a.i)}</b><em>me gusta, comentarios, compartidos y guardados</em></div>
-  <div class="kpi"><span>Engagement</span><b class="num">${pct(a.er)}</b><em>(me gusta + comentarios) ÷ reproducciones</em></div>
-  <div class="kpi"><span>CPV</span><b class="num">${cop(a.cpv)}</b><em>costo por reproducción</em></div>
-  <div class="kpi"><span>CPE</span><b class="num">${cop(a.cpe)}</b><em>costo por interacción</em></div>
+  <div class="kpi"><span>Inversión</span><b class="num">${cop(a.fee)}</b><em>${a.rows} salidas pagadas de ${cop(FEE)} cada una, con ${a.creators} creadores${a.pending?`. ${a.pending===1?"1 salida aún no tiene":a.pending+" salidas aún no tienen"} enlace`:""}</em></div>
+  <div class="kpi"><span>Publicaciones</span><b class="num">${a.links}</b><em>Videos y reels distintos${a.links<a.rows-a.pending?". Algunas salidas comparten la misma publicación":""}</em></div>
+  <div class="kpi"><span>Reproducciones</span><b class="num">${big(a.v)}</b><em>${a.measured===a.links?"Suma de todas las publicaciones":`Suma de ${a.measured} de las ${a.links} publicaciones`}</em></div>
+  <div class="kpi"><span>Interacciones</span><b class="num">${big(a.i)}</b><em>Me gusta, comentarios, compartidos y guardados</em></div>
+  <div class="kpi"><span>Engagement</span><b class="num">${pct(a.er)}</b><em>Me gusta y comentarios por cada 100 reproducciones</em></div>
+  <div class="kpi"><span>Costo por reproducción</span><b class="num">${cop(a.cpv)}</b><em>Inversión dividida entre reproducciones</em></div>
+  <div class="kpi"><span>Costo por interacción</span><b class="num">${cop(a.cpe)}</b><em>Inversión dividida entre interacciones</em></div>
   </section>`;
 }
 function bars(items,fmt){
@@ -275,11 +275,11 @@ function bars(items,fmt){
 }
 function nets(list){
   return `<div class="nets">${["ig","tt"].map(r=>{const a=agg(list.filter(p=>p.red===r));if(!a.rows)return"";return `<div class="net"><div class="nh"><span class="dot" style="background:${NET[r][1]}"></span>${NET[r][0]}</div><dl>
-  <dt>Piezas</dt><dd class="num">${a.links}</dd><dt>Reproducciones</dt><dd class="num">${big(a.v)}</dd><dt>Interacciones</dt><dd class="num">${big(a.i)}</dd><dt>Engagement</dt><dd class="num">${pct(a.er)}</dd><dt>CPV</dt><dd class="num">${cop(a.cpv)}</dd></dl></div>`}).join("")}</div>`;
+  <dt>Publicaciones</dt><dd class="num">${a.links}</dd><dt>Reproducciones</dt><dd class="num">${big(a.v)}</dd><dt>Interacciones</dt><dd class="num">${big(a.i)}</dd><dt>Engagement</dt><dd class="num">${pct(a.er)}</dd><dt>Costo por reproducción</dt><dd class="num">${cop(a.cpv)}</dd></dl></div>`}).join("")}</div>`;
 }
 const netChip=p=>NET[p.red]?`<span class="chip"><span class="dot" style="background:${NET[p.red][1]}"></span>${NET[p.red][0]}</span>`:"—";
 function table(list,showBrand){
-  return `<div class="tw"><table><thead><tr><th class="l">Creador</th>${showBrand?'<th class="l">Marca</th>':""}<th class="l">Red</th><th>Inversión</th><th>Reproducciones</th><th>Interacciones</th><th>Engagement</th><th>CPV</th><th>CPE</th><th class="l">Pieza</th></tr></thead><tbody>
+  return `<div class="tw"><table><thead><tr><th class="l">Creador</th>${showBrand?'<th class="l">Marca</th>':""}<th class="l">Red</th><th>Inversión</th><th>Reproducciones</th><th>Interacciones</th><th>Engagement</th><th>Costo / reproducción</th><th>Costo / interacción</th><th class="l">Publicación</th></tr></thead><tbody>
   ${list.map(p=>{const m=p.m;const tag=(p.tag==="feria"?'<span class="tag">Feria Velú</span>':"")+(p.extra?`<span class="tag">${p.extra}</span>`:"");
   let cells;
   if(!p.url)cells=`<td colspan="6" class="pend">Enlace pendiente</td>`;
@@ -300,14 +300,14 @@ function viewAll(){
   const fer=agg(P.filter(p=>p.tag==="feria")),ferU=uniq(P.filter(p=>p.tag==="feria"));
   const t10=top.slice(0,10),t10tt=t10.filter(p=>p.red==="tt").length,dkIn=t10.filter(p=>p.b==="DK").length,dkRows=P.filter(p=>p.b==="DK").length;
   const sh1=tbTop.m.v/tb.a.v;
-  const fBrand=sh1>=.5?`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}), pero depende de una sola pieza:</b> @${tbTop.c} aporta ${pct(sh1)} de lo que suma la marca.</p>`:`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}) con un resultado repartido:</b> su pieza más vista, de @${tbTop.c}, aporta solo ${pct(sh1)} del total de la marca.</p>`;
-  const fCpv=`<p class="find"><b>${worst.l} es la marca más costosa por reproducción (${cop(worst.a.cpv)}).</b>${worst.k==="DK"?` Pesan las ${fer.rows} salidas de la Feria Velú: promedian ${n(fer.v/ferU.length)} reproducciones por pieza y son, en su mayoría, invitaciones a un evento de 3 días.`:""}</p>`;
-  const fNet=`<p class="find"><b>TikTok tiene ${tt.links} de las ${ALL.links} piezas y aporta ${pct(tt.v/ALL.v)} de las reproducciones.</b> ${pct(tt.er)===pct(ig.er)?`El engagement es igual en las dos redes: ${pct(tt.er)}.`:tt.er>ig.er?`También tiene más engagement: ${pct(tt.er)} frente a ${pct(ig.er)} en Instagram.`:`Instagram, en cambio, tiene más engagement: ${pct(ig.er)} frente a ${pct(tt.er)}.`}</p>`;
-  const fTop=`<p class="find"><b>${t10tt} de las 10 piezas con más reproducciones son de TikTok.</b> Donkat aparece ${dkIn===1?"una sola vez":dkIn+" veces"} aunque tiene ${dkRows} de las ${ALL.rows} salidas.</p>`;
+  const fBrand=sh1>=.5?`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}), pero depende de una sola publicación:</b> @${tbTop.c} aporta ${pct(sh1)} de lo que suma la marca.</p>`:`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}) con un resultado repartido:</b> su publicación más vista, de @${tbTop.c}, aporta solo ${pct(sh1)} del total de la marca.</p>`;
+  const fCpv=`<p class="find"><b>${worst.l} es la marca más costosa por reproducción (${cop(worst.a.cpv)}).</b>${worst.k==="DK"?` Pesan las ${fer.rows} salidas de la Feria Velú: promedian ${n(fer.v/ferU.length)} reproducciones por publicación y son, en su mayoría, invitaciones a un evento de 3 días.`:""}</p>`;
+  const fNet=`<p class="find"><b>TikTok tiene ${tt.links} de las ${ALL.links} publicaciones y aporta ${pct(tt.v/ALL.v)} de las reproducciones.</b> ${pct(tt.er)===pct(ig.er)?`El engagement es igual en las dos redes: ${pct(tt.er)}.`:tt.er>ig.er?`También tiene más engagement: ${pct(tt.er)} frente a ${pct(ig.er)} en Instagram.`:`Instagram, en cambio, tiene más engagement: ${pct(ig.er)} frente a ${pct(tt.er)}.`}</p>`;
+  const fTop=`<p class="find"><b>${t10tt} de las 10 publicaciones con más reproducciones son de TikTok.</b> Donkat aparece ${dkIn===1?"una sola vez":dkIn+" veces"} aunque tiene ${dkRows} de las ${ALL.rows} salidas.</p>`;
   return `<div class="head"><h2>Resumen de campaña</h2><p class="sub">Contenido UGC de Atún P.A.N, Buena Mesa, Donkat y Aunt Jemima en Instagram y TikTok.</p></div>
   ${kpis(ALL)}
   <ul class="ins">
-   <li><b>Dos piezas concentran ${pct(t2/ALL.v)} de las reproducciones:</b> @${top[0].c} (${BN[top[0].b]}, ${big(top[0].m.v)}) y @${top[1].c} (${BN[top[1].b]}, ${big(top[1].m.v)}). ${top[0].red===top[1].red?`Las dos son de ${NET[top[0].red][0]}.`:`Una es de ${NET[top[0].red][0]} y la otra de ${NET[top[1].red][0]}.`}</li>
+   <li><b>Dos publicaciones concentran ${pct(t2/ALL.v)} de las reproducciones:</b> @${top[0].c} (${BN[top[0].b]}, ${big(top[0].m.v)}) y @${top[1].c} (${BN[top[1].b]}, ${big(top[1].m.v)}). ${top[0].red===top[1].red?`Las dos son de ${NET[top[0].red][0]}.`:`Una es de ${NET[top[0].red][0]} y la otra de ${NET[top[1].red][0]}.`}</li>
    <li><b>TikTok rinde más por peso invertido:</b> cada reproducción cuesta ${cop(tt.cpv)} en TikTok y ${cop(ig.cpv)} en Instagram.</li>
    <li><b>${best.l} es la marca más eficiente</b>, con ${cop(best.a.cpv)} por reproducción, frente a ${cop(ALL.cpv)} de la campaña.</li>
   </ul>
@@ -317,8 +317,8 @@ function viewAll(){
   </div>
   <section class="card"><h3>Resultados por red</h3>${nets(P)}${fNet}</section>
   ${convCard("all")}
-  <section class="card"><h3>Las 10 piezas con más reproducciones</h3>${table(top.slice(0,10),true)}${fTop}</section>
-  <p class="foot">Fuente: datos públicos de Instagram y TikTok capturados por Datalítica. Cuando varias salidas usan el mismo enlace, sus reproducciones se cuentan una sola vez en los totales. Los guardados de Instagram no son públicos, y en los reels con me gusta ocultos el engagement no entra en el promedio.</p>`;
+  <section class="card"><h3>Las 10 publicaciones con más reproducciones</h3>${table(top.slice(0,10),true)}${fTop}</section>
+  <p class="foot">Fuente: datos públicos de Instagram y TikTok capturados por Datalítica. Cuando varias salidas comparten la misma publicación, sus reproducciones se cuentan una sola vez. Los guardados de Instagram no son públicos, y en los reels con me gusta ocultos el engagement no entra en el promedio.</p>`;
 }
 function viewBrand(k){
   const l=BN[k],list=P.filter(p=>p.b===k),a=agg(list),u=uniq(list).sort((x,y)=>y.m.v-x.m.v);
@@ -326,18 +326,18 @@ function viewBrand(k){
   const lines=[`<li><b>@${top.c} lidera ${l}</b> con ${big(top.m.v)} reproducciones, ${pct(top.m.v/a.v)} del total de la marca.</li>`,
    `<li><b>El engagement de ${l} es ${pct(a.er)}</b>, ${a.er>=ALL.er?"por encima":"por debajo"} del ${pct(ALL.er)} de la campaña.</li>`];
   if(k==="DK"){const f=agg(list.filter(p=>p.tag==="feria")),o=agg(list.filter(p=>p.tag!=="feria"));lines.push(`<li><b>Las ${f.rows} salidas de la Feria Velú suman ${big(f.v)} reproducciones</b>; las ${o.rows} de contenido de producto suman ${big(o.v)}.</li>`)}
-  else if(eff&&eff!==top)lines.push(`<li><b>@${eff.c} es la pieza más eficiente:</b> ${cop(eff.fee/eff.m.v)} por reproducción.</li>`);
+  else if(eff&&eff!==top)lines.push(`<li><b>@${eff.c} es la publicación más eficiente:</b> ${cop(eff.fee/eff.m.v)} por reproducción.</li>`);
   const vs=u.map(p=>p.m.v),md=med(vs);
-  const fPieces=u.length<4?`<p class="find"><b>Con ${u.length} piezas medidas, ${l} depende de su pieza líder:</b> sin @${top.c}, la marca sumaría ${big(a.v-top.m.v)} reproducciones en lugar de ${big(a.v)}.</p>`:`<p class="find"><b>La mitad de las piezas de ${l} queda por debajo de ${n(md)} reproducciones.</b> La pieza líder suma ${big(top.m.v)}, ${(top.m.v/md).toLocaleString("es-CO",{maximumFractionDigits:0})} veces la mediana.</p>`;
+  const fPieces=u.length<4?`<p class="find"><b>Con ${u.length} publicaciones medidas, ${l} depende de su publicación líder:</b> sin @${top.c}, la marca sumaría ${big(a.v-top.m.v)} reproducciones en lugar de ${big(a.v)}.</p>`:`<p class="find"><b>La mitad de las publicaciones de ${l} queda por debajo de ${n(md)} reproducciones.</b> La publicación líder suma ${big(top.m.v)}, ${(top.m.v/md).toLocaleString("es-CO",{maximumFractionDigits:0})} veces la mediana.</p>`;
   const ni=agg(list.filter(p=>p.red==="ig")),nt=agg(list.filter(p=>p.red==="tt"));
-  const fNet=ni.measured&&nt.measured?`<p class="find"><b>${nt.cpv<ni.cpv?"TikTok":"Instagram"} sale más barato en ${l}:</b> ${cop(Math.min(nt.cpv,ni.cpv))} por reproducción, frente a ${cop(Math.max(nt.cpv,ni.cpv))} en ${nt.cpv<ni.cpv?"Instagram":"TikTok"}.</p>`:`<p class="find"><b>Todas las piezas de ${l} están en ${nt.measured?"TikTok":"Instagram"}</b>, con ${cop(a.cpv)} por reproducción frente a ${cop(ALL.cpv)} de toda la campaña.</p>`;
+  const fNet=ni.measured&&nt.measured?`<p class="find"><b>${nt.cpv<ni.cpv?"TikTok":"Instagram"} sale más barato en ${l}:</b> ${cop(Math.min(nt.cpv,ni.cpv))} por reproducción, frente a ${cop(Math.max(nt.cpv,ni.cpv))} en ${nt.cpv<ni.cpv?"Instagram":"TikTok"}.</p>`:`<p class="find"><b>Todas las publicaciones de ${l} están en ${nt.measured?"TikTok":"Instagram"}</b>, con ${cop(a.cpv)} por reproducción frente a ${cop(ALL.cpv)} de toda la campaña.</p>`;
   const cheap=u.filter(p=>p.fee).sort((x,y)=>x.fee/x.m.v-y.fee/y.m.v),hid=a.hidden;
-  const fTab=`<p class="find"><b>El costo por reproducción va de ${cop(cheap[0].fee/cheap[0].m.v)} a ${cop(cheap[cheap.length-1].fee/cheap[cheap.length-1].m.v)}</b> entre las piezas de ${l}, con el mismo pago por salida.${hid?` ${hid} pieza${hid>1?"s tienen":" tiene"} los me gusta ocultos: su engagement no entra en el promedio.`:""}</p>`;
-  return `<div class="head"><h2>${l}</h2><p class="sub">${a.rows} salidas, ${a.links} piezas y ${a.creators} creadores${a.pending?`. ${a.pending} con enlace pendiente`:""}.</p></div>
+  const fTab=`<p class="find"><b>El costo por reproducción va de ${cop(cheap[0].fee/cheap[0].m.v)} a ${cop(cheap[cheap.length-1].fee/cheap[cheap.length-1].m.v)}</b> entre las publicaciones de ${l}, con el mismo pago por salida.${hid?` ${hid} ${hid>1?"publicaciones tienen":"publicación tiene"} los me gusta ocultos: su engagement no entra en el promedio.`:""}</p>`;
+  return `<div class="head"><h2>${l}</h2><p class="sub">${a.rows} salidas pagadas, ${a.links} publicaciones distintas y ${a.creators} creadores.${a.pending?` ${a.pending===1?"1 salida aún no tiene":a.pending+" salidas aún no tienen"} enlace.`:""}</p></div>
   ${kpis(a)}
   <ul class="ins">${lines.join("")}</ul>
   <div class="grid2">
-   <section class="card"><h3>Reproducciones por pieza</h3><p class="lead">Qué piezas movieron a la marca. El color indica la red.</p>${bars(u.map(p=>({l:"@"+p.c,v:p.m.v,c:NET[p.red][1]})),big)}<div class="legend"><span><i style="background:var(--ig)"></i>Instagram</span><span><i style="background:var(--tt)"></i>TikTok</span></div>${fPieces}</section>
+   <section class="card"><h3>Reproducciones por publicación</h3><p class="lead">Qué publicaciones movieron a la marca. El color indica la red.</p>${bars(u.map(p=>({l:"@"+p.c,v:p.m.v,c:NET[p.red][1]})),big)}<div class="legend"><span><i style="background:var(--ig)"></i>Instagram</span><span><i style="background:var(--tt)"></i>TikTok</span></div>${fPieces}</section>
    <section class="card"><h3>Resultados por red</h3>${nets(list)}${fNet}</section>
   </div>
   ${convCard(k)}
