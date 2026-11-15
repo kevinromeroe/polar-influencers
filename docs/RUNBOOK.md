@@ -68,3 +68,15 @@ Historial: 13 nov 2026, primera actualización con este proceso (`lecturas-2026-
 Agrega una fila en `rows` con el orden `[marca, creador, red, enlace, métricas, etiqueta, nota]`. Si el enlace todavía no llega, usa `null` en enlace y métricas: la salida cuenta en la inversión y aparece como "aún no tiene enlace".
 
 Al 13 de noviembre de 2026 no hay salidas pendientes: las 42 de la base del cliente tienen enlace verificado.
+
+## Corrida automática (desde el 14 de noviembre de 2026)
+
+Corre sola en el OptiPlex **lunes y jueves a las 7:00** (`~/ops/influencers/corrida.sh`, crontab). Decisión de Kevin: sin vista previa; **se publica sola si pasa el control automático** y, si no, no se publica y avisa en el resumen de WhatsApp.
+
+1. `lista.py` arma la lista de publicaciones del reporte.
+2. **Instagram va completo por Apify** (vistas, me gusta, comentarios y seguidores, `apify_ig.py`): la sesión de Instagram en Chrome pidió verificación. Apify no da compartidos: esa cifra se conserva. **TikTok y YouTube** los lee Claude en Chrome (sin sesión, nunca abre Instagram).
+3. `validar_corrida.py`: se frena si se leyó menos del 80 % de las publicaciones o aparece una que no está en el reporte; una cifra que sube más de 30 % y más de 1.000 de golpe no se aplica (se conserva la anterior) y se informa.
+4. `scripts/actualizar_cifras.py` aplica las reglas de este documento, pruebas, build/PDF, push y verificación en línea.
+5. Si fallan las pruebas o el build, el trabajo queda en una rama `fallida/<fecha>-<repo>` y no se publica.
+
+Esta sección reemplaza los pasos manuales de lectura por Chrome para Instagram; el resto de las reglas sigue igual.
