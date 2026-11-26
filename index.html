@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Reporte de campaña de influencers · Alimentos Polar</title>
-<meta name="description" content="Resultados de la campaña UGC de Atún P.A.N, Buena Mesa, Donkat y Aunt Jemima en Instagram y TikTok.">
+<meta name="description" content="Resultados de la campaña UGC de Atún P.A.N, Buena Mesa, Donkat, Donkat Feria, Aunt Jemima, Quaker y Harina P.A.N en Instagram y TikTok.">
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
@@ -22,7 +22,7 @@
   --celeste:#FFFFFF; --coral:#E8354F; --accent:#C8101A;
   --shadow:0 1px 2px rgba(29,26,28,.05),0 4px 16px rgba(29,26,28,.04);
   --ig:#2F6FE4; --tt:#1F1F23;
-  --pan:#F2B705; --pan-mark:#A87700; --on-pan:#1A1300; --bm:#2E7D4F; --dk:#7A4BC2; --aj:#A8551A; --on-brand:#FFFFFF;
+  --pan:#F2B705; --pan-mark:#A87700; --on-pan:#1A1300; --bm:#2E7D4F; --dk:#7A4BC2; --aj:#A8551A; --qk:#2B4C9B; --hp:#0E7C70; --dkf:#B23A82; --on-brand:#FFFFFF;
   --brand:var(--polar); --brand-mark:var(--polar); --on-b:var(--on-polar);
   --warn:#B4570B; --warn-soft:#FDF0E4;
   --display:"Poppins", "Segoe UI", Arial, sans-serif;
@@ -35,7 +35,7 @@
   --celeste:#FFFFFF; --coral:#FF6B80; --accent:#FF7A80;
   --shadow:none;
   --ig:#7FA8F5; --tt:#E8E8EC;
-  --pan:#F5C542; --pan-mark:#F5C542; --bm:#5CC08A; --dk:#B08CF0; --aj:#E09455;
+  --pan:#F5C542; --pan-mark:#F5C542; --bm:#5CC08A; --dk:#B08CF0; --aj:#E09455; --qk:#8FA8F0; --hp:#4CC9BB; --dkf:#E07BB8;
   --warn:#F0A04B; --warn-soft:#2E2414; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#141113; --paper:#1C181A; --soft:#241F21; --lav:#2C2628; --line:#352E31;
@@ -44,7 +44,7 @@
   --celeste:#FFFFFF; --coral:#FF6B80; --accent:#FF7A80;
   --shadow:none;
   --ig:#7FA8F5; --tt:#E8E8EC;
-  --pan:#F5C542; --pan-mark:#F5C542; --bm:#5CC08A; --dk:#B08CF0; --aj:#E09455;
+  --pan:#F5C542; --pan-mark:#F5C542; --bm:#5CC08A; --dk:#B08CF0; --aj:#E09455; --qk:#8FA8F0; --hp:#4CC9BB; --dkf:#E07BB8;
   --warn:#F0A04B; --warn-soft:#2E2414; color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -230,11 +230,11 @@ tr:last-child td{border-bottom:0}
 const D=window.REPORTE;const FEE=D.fee;
 // [marca, creador, red, enlace|null, métricas públicas {v,l,c,s,g} | "oculto", etiqueta]
 const R=D.rows;
-const BRANDS=[["PAN","Atún P.A.N"],["BM","Buena Mesa"],["DK","Donkat"],["AJ","Aunt Jemima"]];
+const BRANDS=[["PAN","Atún P.A.N"],["BM","Buena Mesa"],["DK","Donkat"],["DKF","Donkat Feria"],["AJ","Aunt Jemima"],["QK","Quaker"],["HP","Harina P.A.N"]];
 const BN=Object.fromEntries(BRANDS);
-const BC={all:["var(--polar)","var(--polar)","var(--on-polar)"],PAN:["var(--pan)","var(--pan-mark)","var(--on-pan)"],BM:["var(--bm)","var(--bm)","var(--on-brand)"],DK:["var(--dk)","var(--dk)","var(--on-brand)"],AJ:["var(--aj)","var(--aj)","var(--on-brand)"],int:["var(--warn)","var(--warn)","var(--on-brand)"]};
+const BC={all:["var(--polar)","var(--polar)","var(--on-polar)"],PAN:["var(--pan)","var(--pan-mark)","var(--on-pan)"],BM:["var(--bm)","var(--bm)","var(--on-brand)"],DK:["var(--dk)","var(--dk)","var(--on-brand)"],DKF:["var(--dkf)","var(--dkf)","var(--on-brand)"],AJ:["var(--aj)","var(--aj)","var(--on-brand)"],QK:["var(--qk)","var(--qk)","var(--on-brand)"],HP:["var(--hp)","var(--hp)","var(--on-brand)"],int:["var(--warn)","var(--warn)","var(--on-brand)"]};
 // cada fila de la base es una salida pagada; duvanybetto (P.A.N) publicó TikTok + reel con un solo pago
-const P=R.map(([b,c,red,url,m,tag,extra])=>({b,c,red,url,m,tag:tag||"",extra:extra||"",fee:extra==="mismo pago"?0:FEE}));
+const P=R.map(([b,c,red,url,m,tag,extra])=>({b,c,red,url,m,tag:tag||"",extra:extra||"",fee:(extra==="mismo pago"||extra==="réplica")?0:FEE}));
 
 const nf=new Intl.NumberFormat("es-CO");
 const n=v=>nf.format(Math.round(v));
@@ -247,6 +247,7 @@ const ICON={
  tt:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>'};
 const ico=(r,sm)=>`<span class="ico ${r}${sm?" sm":""}">${ICON[r]}</span>`;
 const inter=m=>m.l+m.c+(m.s||0)+(m.g||0);
+const pl=(k,a,b)=>k+" "+(k===1?a:b);
 const hasM=m=>m&&typeof m==="object";
 
 // Totales: cada enlace cuenta una sola vez aunque aparezca en varias filas (UGC)
@@ -286,7 +287,7 @@ const med=a=>{const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[
 
 function kpis(a){
   return `<section class="kpis" aria-label="Indicadores">
-  <div class="kpi"><span>Inversión</span><b class="num">${cop(a.fee)}</b><em>${a.rows} salidas pagadas de ${cop(FEE)} cada una, con ${a.creators} creadores${a.pending?`. ${a.pending===1?"1 salida aún no tiene":a.pending+" salidas aún no tienen"} enlace`:""}</em></div>
+  <div class="kpi"><span>Inversión</span><b class="num">${cop(a.fee)}</b><em>${pl(a.rows,"salida pagada","salidas pagadas")} de ${cop(FEE)}${a.rows>1?" cada una":""}, con ${pl(a.creators,"creador","creadores")}${a.pending?`. ${a.pending===1?"1 salida aún no tiene":a.pending+" salidas aún no tienen"} enlace`:""}</em></div>
   <div class="kpi"><span>Publicaciones</span><b class="num">${a.links}</b><em>Videos y reels distintos${a.links<a.rows-a.pending?". Algunas salidas comparten la misma publicación":""}</em></div>
   <div class="kpi"><span>Reproducciones</span><b class="num">${big(a.v)}</b><em>${a.measured===a.links?"Suma de todas las publicaciones":`Suma de ${a.measured} de las ${a.links} publicaciones`}</em></div>
   <div class="kpi"><span>Interacciones</span><b class="num">${big(a.i)}</b><em>Me gusta, comentarios, compartidos y guardados</em></div>
@@ -327,10 +328,10 @@ function viewAll(){
   const t10=top.slice(0,10),t10tt=t10.filter(p=>p.red==="tt").length,dkIn=t10.filter(p=>p.b==="DK").length,dkRows=P.filter(p=>p.b==="DK").length;
   const sh1=tbTop.m.v/tb.a.v;
   const fBrand=sh1>=.5?`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}), pero depende de una sola publicación:</b> @${tbTop.c} aporta ${pct(sh1)} de lo que suma la marca.</p>`:`<p class="find"><b>${tb.l} lidera en reproducciones (${big(tb.a.v)}) con un resultado repartido:</b> su publicación más vista, de @${tbTop.c}, aporta solo ${pct(sh1)} del total de la marca.</p>`;
-  const fCpv=`<p class="find"><b>${worst.l} es la marca más costosa por reproducción (${cop(worst.a.cpv)}).</b>${worst.k==="DK"?` Pesan las ${fer.rows} salidas de la Feria Velú: promedian ${n(fer.v/ferU.length)} reproducciones por publicación y son, en su mayoría, invitaciones a un evento de 3 días.`:""}</p>`;
+  const fCpv=`<p class="find"><b>${worst.l} es la marca más costosa por reproducción (${cop(worst.a.cpv)}).</b>${worst.k==="DKF"?` Son ${fer.rows} salidas de la Feria Velú: promedian ${n(fer.v/ferU.length)} reproducciones por publicación y son, en su mayoría, invitaciones a un evento de 3 días.`:""}</p>`;
   const fNet=`<p class="find"><b>TikTok tiene ${tt.links} de las ${ALL.links} publicaciones y aporta ${pct(tt.v/ALL.v)} de las reproducciones.</b> ${pct(tt.er)===pct(ig.er)?`El engagement es igual en las dos redes: ${pct(tt.er)}.`:tt.er>ig.er?`También tiene más engagement: ${pct(tt.er)} frente a ${pct(ig.er)} en Instagram.`:`Instagram, en cambio, tiene más engagement: ${pct(ig.er)} frente a ${pct(tt.er)}.`}</p>`;
   const fTop=`<p class="find"><b>${t10tt} de las 10 publicaciones con más reproducciones son de TikTok.</b> Donkat aparece ${dkIn===1?"una sola vez":dkIn+" veces"} aunque tiene ${dkRows} de las ${ALL.rows} salidas.</p>`;
-  return `<div class="head"><h2>Resumen de campaña</h2><p class="sub">Contenido UGC de Atún P.A.N, Buena Mesa, Donkat y Aunt Jemima en Instagram y TikTok.</p></div>
+  return `<div class="head"><h2>Resumen de campaña</h2><p class="sub">Contenido UGC de Atún P.A.N, Buena Mesa, Donkat, Donkat Feria, Aunt Jemima, Quaker y Harina P.A.N en Instagram y TikTok.</p></div>
   ${kpis(ALL)}
   <ul class="ins">
    <li><b>Dos publicaciones concentran ${pct(t2/ALL.v)} de las reproducciones:</b> @${top[0].c} (${BN[top[0].b]}, ${big(top[0].m.v)}) y @${top[1].c} (${BN[top[1].b]}, ${big(top[1].m.v)}). ${top[0].red===top[1].red?`Las dos son de ${NET[top[0].red][0]}.`:`Una es de ${NET[top[0].red][0]} y la otra de ${NET[top[1].red][0]}.`}</li>
@@ -349,17 +350,17 @@ function viewAll(){
 function viewBrand(k){
   const l=BN[k],list=P.filter(p=>p.b===k),a=agg(list),u=uniq(list).sort((x,y)=>y.m.v-x.m.v);
   const top=u[0],eff=[...u].filter(p=>p.fee).sort((x,y)=>x.fee/x.m.v-y.fee/y.m.v)[0];
-  const lines=[`<li><b>@${top.c} lidera ${l}</b> con ${big(top.m.v)} reproducciones, ${pct(top.m.v/a.v)} del total de la marca.</li>`,
+  const lines=[u.length===1?`<li><b>@${top.c} es la única publicación de ${l}</b>, con ${big(top.m.v)} reproducciones.</li>`:`<li><b>@${top.c} lidera ${l}</b> con ${big(top.m.v)} reproducciones, ${pct(top.m.v/a.v)} del total de la marca.</li>`,
    `<li><b>El engagement de ${l} es ${pct(a.er)}</b>, ${a.er>=ALL.er?"por encima":"por debajo"} del ${pct(ALL.er)} de la campaña.</li>`];
-  if(k==="DK"){const f=agg(list.filter(p=>p.tag==="feria")),o=agg(list.filter(p=>p.tag!=="feria"));lines.push(`<li><b>Las ${f.rows} salidas de la Feria Velú suman ${big(f.v)} reproducciones</b>; las ${o.rows} de contenido de producto suman ${big(o.v)}.</li>`)}
+  if(k==="DK"&&list.some(p=>p.tag==="feria")){const f=agg(list.filter(p=>p.tag==="feria")),o=agg(list.filter(p=>p.tag!=="feria"));lines.push(`<li><b>Las ${f.rows} salidas de la Feria Velú suman ${big(f.v)} reproducciones</b>; las ${o.rows} de contenido de producto suman ${big(o.v)}.</li>`)}
   else if(eff&&eff!==top)lines.push(`<li><b>@${eff.c} es la publicación más eficiente:</b> ${cop(eff.fee/eff.m.v)} por reproducción.</li>`);
   const vs=u.map(p=>p.m.v),md=med(vs);
-  const fPieces=u.length<4?`<p class="find"><b>Con ${u.length} publicaciones medidas, ${l} depende de su publicación líder:</b> sin @${top.c}, la marca sumaría ${big(a.v-top.m.v)} reproducciones en lugar de ${big(a.v)}.</p>`:`<p class="find"><b>La mitad de las publicaciones de ${l} queda por debajo de ${n(md)} reproducciones.</b> La publicación líder suma ${big(top.m.v)}, ${(top.m.v/md).toLocaleString("es-CO",{maximumFractionDigits:0})} veces la mediana.</p>`;
+  const fPieces=u.length===1?`<p class="find"><b>Con una sola publicación todavía no hay con qué comparar dentro de ${l}.</b> Sus ${big(top.m.v)} reproducciones sirven de referencia para las próximas salidas de la marca.</p>`:u.length<4?`<p class="find"><b>Con ${u.length} publicaciones medidas, ${l} depende de su publicación líder:</b> sin @${top.c}, la marca sumaría ${big(a.v-top.m.v)} reproducciones en lugar de ${big(a.v)}.</p>`:`<p class="find"><b>La mitad de las publicaciones de ${l} queda por debajo de ${n(md)} reproducciones.</b> La publicación líder suma ${big(top.m.v)}, ${(top.m.v/md).toLocaleString("es-CO",{maximumFractionDigits:0})} veces la mediana.</p>`;
   const ni=agg(list.filter(p=>p.red==="ig")),nt=agg(list.filter(p=>p.red==="tt"));
   const fNet=ni.measured&&nt.measured?`<p class="find"><b>${nt.cpv<ni.cpv?"TikTok":"Instagram"} sale más barato en ${l}:</b> ${cop(Math.min(nt.cpv,ni.cpv))} por reproducción, frente a ${cop(Math.max(nt.cpv,ni.cpv))} en ${nt.cpv<ni.cpv?"Instagram":"TikTok"}.</p>`:`<p class="find"><b>Todas las publicaciones de ${l} están en ${nt.measured?"TikTok":"Instagram"}</b>, con ${cop(a.cpv)} por reproducción frente a ${cop(ALL.cpv)} de toda la campaña.</p>`;
   const cheap=u.filter(p=>p.fee).sort((x,y)=>x.fee/x.m.v-y.fee/y.m.v),hid=a.hidden;
-  const fTab=`<p class="find"><b>El costo por reproducción va de ${cop(cheap[0].fee/cheap[0].m.v)} a ${cop(cheap[cheap.length-1].fee/cheap[cheap.length-1].m.v)}</b> entre las publicaciones de ${l}, con el mismo pago por salida.${hid?` ${hid} ${hid>1?"publicaciones tienen":"publicación tiene"} los me gusta ocultos: su engagement no entra en el promedio.`:""}</p>`;
-  return `<div class="head"><h2>${l}</h2><p class="sub">${a.rows} salidas pagadas, ${a.links} publicaciones distintas y ${a.creators} creadores.${a.pending?` ${a.pending===1?"1 salida aún no tiene":a.pending+" salidas aún no tienen"} enlace.`:""}</p></div>
+  const fTab=cheap.length===1?`<p class="find"><b>Cada reproducción de ${l} costó ${cop(cheap[0].fee/cheap[0].m.v)}</b>, frente a ${cop(ALL.cpv)} del promedio de la campaña.</p>`:`<p class="find"><b>El costo por reproducción va de ${cop(cheap[0].fee/cheap[0].m.v)} a ${cop(cheap[cheap.length-1].fee/cheap[cheap.length-1].m.v)}</b> entre las publicaciones de ${l}, con el mismo pago por salida.${hid?` ${hid} ${hid>1?"publicaciones tienen":"publicación tiene"} los me gusta ocultos: su engagement no entra en el promedio.`:""}</p>`;
+  return `<div class="head"><h2>${l}</h2><p class="sub">${pl(a.rows,"salida pagada","salidas pagadas")}, ${pl(a.links,"publicación","publicaciones distintas")} y ${pl(a.creators,"creador","creadores")}.${list.some(p=>p.extra==="réplica")?` Incluye ${pl(list.filter(p=>p.extra==="réplica").length,"réplica","réplicas")}: el mismo contenido en otra red, sin pago adicional.`:""}${a.pending?` ${a.pending===1?"1 salida aún no tiene":a.pending+" salidas aún no tienen"} enlace.`:""}</p></div>
   ${kpis(a)}
   <ul class="ins">${lines.join("")}</ul>
   <div class="grid2">
@@ -372,7 +373,7 @@ function viewBrand(k){
 const TABS=[["all","Resumen de campaña"],...BRANDS];
 const tabsEl=document.getElementById("tabs"),view=document.getElementById("view");
 tabsEl.innerHTML=TABS.map(([k,l])=>{const c=k==="all"?P.filter(p=>p.fee).length:P.filter(p=>p.b===k&&p.fee).length;return `<button class="tab" role="tab" data-k="${k}" aria-selected="${k==="all"}" style="--sw:${BC[k][0]}">${k!=="all"?'<span class="sw" aria-hidden="true"></span>':""}${l} <small>${c}</small></button>`}).join("");
-const SLUG={all:"resumen",PAN:"atun-pan",BM:"buena-mesa",DK:"donkat",AJ:"aunt-jemima"};
+const SLUG={all:"resumen",PAN:"atun-pan",BM:"buena-mesa",DK:"donkat",DKF:"donkat-feria",AJ:"aunt-jemima",QK:"quaker",HP:"harina-pan"};
 const KEY=Object.fromEntries(Object.entries(SLUG).map(([k,v])=>[v,k]));
 window.REPORT_TABS=Object.values(SLUG);
 document.getElementById("corte").textContent="Datos públicos al "+D.corteTexto;

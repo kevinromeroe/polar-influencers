@@ -67,7 +67,7 @@ Historial: 13 nov 2026, primera actualización con este proceso (`lecturas-2026-
 
 Agrega una fila en `rows` con el orden `[marca, creador, red, enlace, métricas, etiqueta, nota]`. Si el enlace todavía no llega, usa `null` en enlace y métricas: la salida cuenta en la inversión y aparece como "aún no tiene enlace".
 
-Al 13 de noviembre de 2026 no hay salidas pendientes: las 42 de la base del cliente tienen enlace verificado.
+Base del cliente del 26 de noviembre de 2026: 63 salidas pagadas y 3 réplicas sin costo (nota "réplica"). Pendiente: @kte_kathe (Donkat), cuyo enlace es un perfil y no una publicación. Donkat y Donkat Feria van en pestañas separadas (marcas `DK` y `DKF`).
 
 ## Corrida automática (desde el 14 de noviembre de 2026)
 
